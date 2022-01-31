@@ -102,12 +102,14 @@ class FootballManager {
         String receiverCountry = receiver.nextLine();
         int receiverBalance = receiver.nextInt();
         int receiverFee = receiver.nextInt();
+        receiver.close();
 
         Scanner seller = new Scanner(new File("project\\" + team + "\\info.txt"));
         String sellerCity = seller.nextLine();
         String sellerCountry = seller.nextLine();
         int sellerBalance = seller.nextInt();
         int sellerFee = seller.nextInt();
+        seller.close();
 
         int formula = ((Year.now().getValue() - startYear) * 12 * 100000 / age);
         int fullPrice = formula + (formula * sellerFee / 100);
@@ -179,6 +181,7 @@ class FootballManager {
                                 "\nBalance: " + teamScan.nextInt() + "$" +
                                 "\nTransfer fee: " + teamScan.nextInt() + "%\n\nPlayers:");
                     }
+                    teamScan.close();
                     String[] players = teamPath.list();
                     if (players != null && players.length > 1) {
                         for (String s : players) {
@@ -195,6 +198,7 @@ class FootballManager {
                                 Scanner playerScan = new Scanner(playerPath);
                                 int startYear = playerScan.nextInt();
                                 int age = playerScan.nextInt();
+                                playerScan.close();
                                 println("Career start year: " + startYear
                                         + "\nAge: " + age
                                         + "\nTransfer this player? y/n");
